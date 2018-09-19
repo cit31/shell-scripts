@@ -8,6 +8,11 @@ USAGE() {
 }
 
 ## Check whether Root User or not
+USERID=$(id -u)
+if [ $USERID -ne 0 ]; then 
+    echo -e "\e[33m You Should be a root user to perform this script"
+    exit 1
+fi
 
 LOG=/tmp/stack.log
 rm -f $LOG
