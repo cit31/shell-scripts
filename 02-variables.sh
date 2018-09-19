@@ -15,3 +15,8 @@ echo Value of a = $a , Or Value of a = ${a}
 ## On Shell(on whereever you are executing scripts): export VARIABLE OR export VARIABLE=DATA
 echo "Environment Varible COURSE = $COURSE"
 
+## Command Subsution 
+## By running some command and you define the variable with that command o/p 
+DATE=$(date +%F)
+
+echo DATE = $DATE
