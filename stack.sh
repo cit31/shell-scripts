@@ -10,7 +10,7 @@ USAGE() {
 ## Check whether Root User or not
 USERID=$(id -u)
 if [ $USERID -ne 0 ]; then 
-    echo -e "\e[33m You Should be a root user to perform this script"
+    echo -e "\e[33m You Should be a root user to perform this script \e[0m"
     exit 1
 fi
 
