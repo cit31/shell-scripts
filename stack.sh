@@ -7,6 +7,8 @@ USAGE() {
     exit 1
 }
 
+## Check whether Root User or not
+
 LOG=/tmp/stack.log
 rm -f $LOG
 
