@@ -22,7 +22,7 @@ Head() {
 }
 
 Stat() {
-    if [ "$1" = SKIP ]; then 
+    if [ "$1" = "SKIP" ]; then 
         echo -e " > $2 - \e[35mSKIPPING\e[0m"
     elif [ $1 -eq 0 ]; then 
         echo -e " > $2 - \e[32mSUCCESS\e[0m"
