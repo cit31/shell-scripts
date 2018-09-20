@@ -16,6 +16,8 @@ fi
 
 LOG=/tmp/stack.log
 rm -f $LOG
+TOMCAT_URL=$(curl https://tomcat.apache.org/download-90.cgi | grep  tar.gz  | grep nofollow | head -1 | awk -F \" '{print $2}')
+
 
 Head() {
     echo -e "\n\t>>\e[1;4;36m $* \e[0m<<"
@@ -62,6 +64,8 @@ APPF() {
         useradd studentapp 
         Stat $? "Creating Application User"
     fi
+    cd /home/studentapp
+    wget -qO- $TOMCAT_URL | tar -xf 
 }
 
 APP=$1 
