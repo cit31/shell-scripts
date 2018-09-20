@@ -65,7 +65,7 @@ APPF() {
         Stat $? "Creating Application User"
     fi
     cd /home/studentapp
-    wget -qO- $TOMCAT_URL | tar -xf 
+    wget -qO- $TOMCAT_URL | tar -xz
 }
 
 APP=$1 
