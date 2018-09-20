@@ -68,6 +68,8 @@ APPF() {
         useradd studentapp 
         Stat $? "Creating Application User"
     fi
+    yum install java -y &>>$LOG 
+    Stat $? "Installing Java"
     cd /home/studentapp
     wget -qO- $TOMCAT_URL | tar -xz
     Stat $? "Downloading Tomcat"
