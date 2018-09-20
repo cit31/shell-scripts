@@ -73,7 +73,11 @@ APPF() {
     Stat $? "Downloading Tomcat"
     cd $TOMCAT_DIR 
     rm -rf webapps/* 
-
+    wget -q $WAR_URL -O webapps/student.war &>>$LOG
+    Stat $? "Downloding WAR File"
+    wget -q $JDBC_URL -O lib/mysql-connector-java-5.1.40.jar &>>$LOG
+    Stat $? "Downloading JDBC Jar file"
+    
 }
 
 APP=$1 
