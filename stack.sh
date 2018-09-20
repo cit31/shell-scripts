@@ -17,6 +17,7 @@ fi
 LOG=/tmp/stack.log
 rm -f $LOG
 TOMCAT_URL=$(curl -s https://tomcat.apache.org/download-90.cgi | grep  tar.gz  | grep nofollow | head -1 | awk -F \" '{print $2}')
+TOMCAT_DIR=$(echo $TOMCAT_URL | awk -F / '{print $NF}' | sed -e 's/.tar.gz//')
 
 
 Head() {
@@ -66,6 +67,8 @@ APPF() {
     fi
     cd /home/studentapp
     wget -qO- $TOMCAT_URL | tar -xz
+    Stat $? "Downloading Tomcat"
+
 }
 
 APP=$1 
