@@ -34,12 +34,16 @@ Stat() {
 WEBF() {
     #
     Head "WEB SERVER SETUP"
-    yum install httpd -y &>$LOG 
+    yum install httpd -y &>>$LOG 
     Stat $? "Installing HTTPD Server"
     IPADD=$(hostname -i)
     echo "ProxyRequests Off
 ProxyPass /student http://${IPADD}:8080/student
 ProxyPassReverse /student http://${IPADD}:8080/student" > /etc/httpd/conf.d/tomcat.conf
+    Stat $? "Configuring HTTPD Service"
+    systemctl enable httpd &>>$LOG
+    systemctl restart httpd &>>$LOG
+    Stat $? "Starting HTTPD Service"
 }
 
 APPF() {
