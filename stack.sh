@@ -77,7 +77,7 @@ APPF() {
     Stat $? "Downloding WAR File"
     wget -q $JDBC_URL -O lib/mysql-connector-java-5.1.40.jar &>>$LOG
     Stat $? "Downloading JDBC Jar file"
-
+    sed -i -e "$ i $JDBC_STRING" conf/context.xml
 }
 
 APP=$1 
