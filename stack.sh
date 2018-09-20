@@ -34,8 +34,13 @@ Stat() {
 WEBF() {
     #
     Head "WEB SERVER SETUP"
-    yum install httpd -y &>>$LOG 
-    Stat $? "Installing HTTPD Server"
+    rpm -q httpd &>/dev/null 
+    if [ $? -eq 0 ]; then 
+        Stat SKIP "Installing HTTPD Server"
+    else  
+        yum install httpd -y &>>$LOG 
+        Stat $? "Installing HTTPD Server"
+    fi
     IPADD=$(hostname -i)
     echo "ProxyRequests Off
 ProxyPass /student http://${IPADD}:8080/student
