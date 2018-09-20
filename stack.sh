@@ -18,7 +18,7 @@ LOG=/tmp/stack.log
 rm -f $LOG
 
 Head() {
-    echo -e "\t>>\e[1;4;36m $* \e[0m<<"
+    echo -e "\n\t>>\e[1;4;36m $* \e[0m<<"
 }
 
 Stat() {
