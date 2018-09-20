@@ -18,6 +18,9 @@ LOG=/tmp/stack.log
 rm -f $LOG
 TOMCAT_URL=$(curl -s https://tomcat.apache.org/download-90.cgi | grep  tar.gz  | grep nofollow | head -1 | awk -F \" '{print $2}')
 TOMCAT_DIR=$(echo $TOMCAT_URL | awk -F / '{print $NF}' | sed -e 's/.tar.gz//')
+TOMCAT_DIR="/home/studentapp/$TOMCAT_DIR"
+WAR_URL="https://github.com/cit31/project-1/raw/master/student.war"
+JDBC_URL="https://github.com/cit31/project-1/raw/master/mysql-connector-java-5.1.40.jar"
 
 
 Head() {
@@ -68,6 +71,8 @@ APPF() {
     cd /home/studentapp
     wget -qO- $TOMCAT_URL | tar -xz
     Stat $? "Downloading Tomcat"
+    cd $TOMCAT_DIR 
+    rm -rf webapps/* 
 
 }
 
