@@ -16,7 +16,7 @@ fi
 
 LOG=/tmp/stack.log
 rm -f $LOG
-TOMCAT_URL=$(curl https://tomcat.apache.org/download-90.cgi | grep  tar.gz  | grep nofollow | head -1 | awk -F \" '{print $2}')
+TOMCAT_URL=$(curl -s https://tomcat.apache.org/download-90.cgi | grep  tar.gz  | grep nofollow | head -1 | awk -F \" '{print $2}')
 
 
 Head() {
