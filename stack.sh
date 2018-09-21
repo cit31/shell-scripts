@@ -83,6 +83,7 @@ APPF() {
     chown -R studentapp:studentapp $TOMCAT_DIR
     wget -q https://raw.githubusercontent.com/cit31/project-1/master/tomcat-init -O /etc/init.d/tomcat &>>$LOG 
     chmod +x  /etc/init.d/tomcat
+    systemctl daemon-reload
     systemctl enable tomcat &>>$LOG 
     systemctl restart tomcat 
     Stat $? "Starting Tomcat"
