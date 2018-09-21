@@ -22,7 +22,7 @@ TOMCAT_DIR=$(echo $TOMCAT_URL | awk -F / '{print $NF}' | sed -e 's/.tar.gz//')
 TOMCAT_DIR="/home/studentapp/$TOMCAT_DIR"
 WAR_URL="https://github.com/cit31/project-1/raw/master/student.war"
 JDBC_URL="https://github.com/cit31/project-1/raw/master/mysql-connector-java-5.1.40.jar"
-JDBC_STRING="<Resource name="jdbc/TestDB" auth="Container" type="javax.sql.DataSource" maxTotal="100" maxIdle="30" maxWaitMillis="10000" username="student" password="student@1" driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://${IPADD}:3306/studentapp"/>"
+JDBC_STRING="<Resource name=\"jdbc/TestDB\" auth=\"Container\" type=\"javax.sql.DataSource\" maxTotal=\"100\" maxIdle=\"30\" maxWaitMillis=\"10000\" username=\"student\" password=\"student@1\" driverClassName=\"com.mysql.jdbc.Driver\" url=\"jdbc:mysql://${IPADD}:3306/studentapp\"/>"
 
 Head() {
     echo -e "\n\t>>\e[1;4;36m $* \e[0m<<"
