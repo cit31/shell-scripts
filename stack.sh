@@ -88,6 +88,18 @@ APPF() {
     Stat $? "Starting Tomcat"
 }
 
+DBF() {
+    Head "DB SERVER SETUP"
+    yum install mariadb-server -y &>>$LOG 
+    Stat $? "Installing MariaDB Server"
+    systemctl enable mariadb &>>$LOG 
+    systemctl start mariadb &>>$LOG 
+    Stat $? "Starting MariaDB Service"
+    curl -s https://raw.githubusercontent.com/cit31/project-1/master/student.sql >/tmp/student.sql 
+    mysql </tmp/student.sql  &>>$LOG
+    Stat $? "Loading MySQL Schema"
+}
+
 APP=$1 
 case $APP in 
     WEB|APP)
@@ -95,7 +107,7 @@ case $APP in
         APPF
         ;; 
     DB) 
-        echo "DB SERVER SETUP"
+        DBF
         ;;
     *) 
         echo "Invalid Option!!  "
