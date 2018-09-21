@@ -109,6 +109,11 @@ case $APP in
     DB) 
         DBF
         ;;
+    ALL)
+        WEBF
+        APPF
+        DBF
+        ;;
     *) 
         echo "Invalid Option!!  "
         USAGE
