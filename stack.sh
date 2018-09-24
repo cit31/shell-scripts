@@ -1,7 +1,9 @@
 #!/bin/bash
 
 ### Script to steup WEB + APP + DB
-
+if [ -f /etc/stack ]; then 
+  exit 
+fi
 USAGE() {
     echo "Usage:: $0 {APP|WEB|DB}"
     exit 1
@@ -57,6 +59,7 @@ ProxyPassReverse /student http://${IPADD}:8080/student" > /etc/httpd/conf.d/tomc
     systemctl enable httpd &>>$LOG
     systemctl restart httpd &>>$LOG
     Stat $? "Starting HTTPD Service"
+    touch /etc/stack
 }
 
 APPF() {
@@ -87,6 +90,7 @@ APPF() {
     systemctl enable tomcat &>>$LOG 
     systemctl restart tomcat 
     Stat $? "Starting Tomcat"
+    touch /etc/stack
 }
 
 DBF() {
@@ -99,6 +103,7 @@ DBF() {
     curl -s https://raw.githubusercontent.com/cit31/project-1/master/student.sql >/tmp/student.sql 
     mysql </tmp/student.sql  &>>$LOG
     Stat $? "Loading MySQL Schema"
+    touch /etc/stack
 }
 
 APP=$1 
